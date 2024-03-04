@@ -15,4 +15,12 @@ describe("Home Page", () => {
         const { container } = render(<HomePage />);
         expect(container).toMatchSnapshot();
     });
+
+    it("renders unclicked test val", () => {
+        render(<HomePage />);
+
+        const result = screen.getByText("Test val: False");
+
+        expect(result).toBeInTheDocument();
+    });
 });
