@@ -1,1 +1,1 @@
-test("Renders with text Home Page");
+test("Renders with text Home Page", () => {});
