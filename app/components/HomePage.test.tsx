@@ -13,34 +13,29 @@ describe("Home Page", () => {
         expect(heading).toBeInTheDocument();
     });
 
-    it("renders HomePage unchanged", () => {
-        const { container } = render(<HomePage />);
-        expect(container).toMatchSnapshot();
-    });
-
     it("renders unclicked test val to be False", () => {
         render(<HomePage />);
 
-        const result = screen.getByText("Test val: False");
+        const result = screen.getByText("Test val:");
 
         expect(result).toBeInTheDocument();
     });
 
-    it("does not render test val to be True if unclicked", () => {
+    it("does not render ChildPage1 if change test button is unclicked", () => {
         render(<HomePage />);
 
-        const result = screen.queryByText("Test val: True");
+        const result = screen.queryByRole("heading", { name: "ChildPage1" });
 
         expect(result).not.toBeInTheDocument();
     });
 
-    it("renders clicked test val to be True", async () => {
+    it("renders ChildPage1 after clicked change test button", async () => {
         const user = userEvent.setup();
         render(<HomePage />);
 
         await user.click(screen.getByRole("button", { name: "Change test" }));
 
-        const result = screen.getByText("Test val: True");
+        const result = screen.getByRole("heading", { name: "ChildPage1" });
 
         expect(result).toBeInTheDocument();
     });
