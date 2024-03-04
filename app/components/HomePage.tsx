@@ -12,7 +12,8 @@ const HomePage = () => {
     return (
         <div>
             <h1>Home Page</h1>
-            <button onClick={clickHandler}></button>
+            <p>Test val: {test ? "True" : "False"}</p>
+            <button onClick={clickHandler}>Change test</button>
         </div>
     );
 };
