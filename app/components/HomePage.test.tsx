@@ -26,6 +26,14 @@ describe("Home Page", () => {
         expect(result).toBeInTheDocument();
     });
 
+    it("does not render test val to be True if unclicked", () => {
+        render(<HomePage />);
+
+        const result = screen.queryByText("Test val: True");
+
+        expect(result).not.toBeInTheDocument();
+    });
+
     it("renders clicked test val to be True", async () => {
         const user = userEvent.setup();
         render(<HomePage />);
