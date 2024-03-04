@@ -2,8 +2,10 @@ import { render, screen } from "@testing-library/react";
 import HomePage from "./HomePage";
 import "@testing-library/jest-dom";
 
-test("Renders with text Home Page", () => {
-    render(<HomePage />);
-    const result = screen.getByText("Home Page");
-    expect(result).toBeInTheDocument();
+describe("Home Page", () => {
+    test("Renders Home Page with title 'Home Page'", () => {
+        render(<HomePage />);
+        const result = screen.getByText("Home Page");
+        expect(result).toBeInTheDocument();
+    });
 });
