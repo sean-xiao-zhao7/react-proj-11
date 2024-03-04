@@ -3,5 +3,6 @@ import HomePage from "./HomePage";
 
 test("Renders with text Home Page", () => {
     render(<HomePage />);
-    screen.getByText("Home Page", { exact: true });
+    const result = screen.getByText("Home Page");
+    expect(result).toBeInTheDocument();
 });
