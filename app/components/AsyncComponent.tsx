@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 
 const AsyncComponent = () => {
-    const [resultList, setResultList] = useState([]);
+    const [resultList, setResultList] = useState<number[]>([]);
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        setTimeout(() => {
+            setResultList([1, 2, 3]);
+        }, 1000);
+    }, []);
 
     if (resultList.length <= 0) {
         return (
@@ -16,7 +20,7 @@ const AsyncComponent = () => {
             <div>
                 <ul>
                     {resultList.map((listItem) => {
-                        return <li>{listItem}</li>;
+                        return <li key={listItem}>{listItem}</li>;
                     })}
                 </ul>
             </div>
