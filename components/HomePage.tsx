@@ -15,7 +15,6 @@ const HomePage = () => {
 
     return (
         <main>
-            <h1>Home Page</h1>
             <div>Test val: {test ? <ChildPage1 /> : null}</div>
             <button onClick={clickHandler}>Change test</button>
             <AsyncComponent />
