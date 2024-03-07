@@ -1,10 +1,13 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+import { jest } from "@jest/globals";
 
 import AsyncComponent from "./AsyncComponent";
 
 describe("Testing Async Component", () => {
     it("Renders no items initially", () => {
+        (window.fetch as jest.Mock) = jest.fn();
+
         render(<AsyncComponent />);
 
         const listItems = screen.queryByRole("list");
@@ -14,7 +17,9 @@ describe("Testing Async Component", () => {
         expect(heading).toHaveRole("heading");
     });
 
-    it("Renders a list after 1000 ms", async () => {
+    it("Renders a list after fetch completes", async () => {
+        (window.fetch as jest.Mock) = jest.fn();
+
         render(<AsyncComponent />);
 
         const listItems = await screen.findAllByRole(

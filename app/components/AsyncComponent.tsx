@@ -4,9 +4,9 @@ const AsyncComponent = () => {
     const [resultList, setResultList] = useState<number[]>([]);
 
     useEffect(() => {
-        setTimeout(() => {
-            setResultList([1, 2, 3]);
-        }, 1000);
+        fetch("test")
+            .then((response) => response.json())
+            .then((result) => setResultList(result));
     }, []);
 
     if (resultList.length <= 0) {
