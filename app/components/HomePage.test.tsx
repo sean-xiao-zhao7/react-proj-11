@@ -14,29 +14,29 @@ describe("Home Page", () => {
 
     it("renders a heading", async () => {
         render(<HomePage />);
-        await waitFor(async () => {
-            const heading = screen.getByRole("heading", { level: 1 });
 
+        const heading = screen.getByRole("heading", { level: 1 });
+        await waitFor(async () => {
             expect(heading).toBeInTheDocument();
         });
     });
 
     it("renders unclicked test val to be False", async () => {
         render(<HomePage />);
-        await waitFor(async () => {
-            const result = screen.getByText("Test val:");
 
+        const result = screen.getByText("Test val:");
+        await waitFor(async () => {
             expect(result).toBeInTheDocument();
         });
     });
 
     it("does not render ChildPage1 if change test button is unclicked", async () => {
         render(<HomePage />);
-        await waitFor(async () => {
-            const result = screen.queryByRole("heading", {
-                name: "ChildPage1",
-            });
 
+        const result = screen.queryByRole("heading", {
+            name: "ChildPage1",
+        });
+        await waitFor(async () => {
             expect(result).not.toBeInTheDocument();
         });
     });
@@ -45,12 +45,9 @@ describe("Home Page", () => {
         const user = userEvent.setup();
         render(<HomePage />);
 
-        await waitFor(async () => {
-            await user.click(
-                screen.getByRole("button", { name: "Change test" })
-            );
-            const result = screen.getByRole("heading", { name: "ChildPage1" });
-            expect(result).toBeInTheDocument();
-        });
+        await user.click(screen.getByRole("button", { name: "Change test" }));
+        const result = screen.getByRole("heading", { name: "ChildPage1" });
+
+        expect(result).toBeInTheDocument();
     });
 });

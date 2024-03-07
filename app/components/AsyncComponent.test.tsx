@@ -13,29 +13,29 @@ describe("Testing Async Component", () => {
 
     it("Renders no items initially", async () => {
         render(<AsyncComponent />);
-        await waitFor(() => {
-            const listItems = screen.queryByRole("list");
-            expect(listItems).toBeNull;
 
-            const heading = screen.getByText("No items");
+        const listItems = screen.queryByRole("list");
+        expect(listItems).toBeNull;
+
+        const heading = screen.getByText("No items");
+
+        await waitFor(() => {
             expect(heading).toHaveRole("heading");
         });
     });
 
     it("Renders a list after fetch completes", async () => {
         render(<AsyncComponent />);
-        await waitFor(async () => {
-            const listItems = await screen.findAllByRole(
-                "listitem",
-                {},
-                {
-                    timeout: 2000,
-                }
-            );
 
-            expect(listItems).toHaveLength(3);
-            const heading = screen.queryByText("No items");
-            expect(heading).toBeNull;
-        });
+        const listItems = await screen.findAllByRole(
+            "listitem",
+            {},
+            {
+                timeout: 2000,
+            }
+        );
+        expect(listItems).toHaveLength(3);
+        const heading = screen.queryByText("No items");
+        expect(heading).toBeNull;
     });
 });
