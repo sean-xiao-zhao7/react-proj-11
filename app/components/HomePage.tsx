@@ -12,12 +12,12 @@ const HomePage = () => {
     };
 
     return (
-        <div>
+        <main>
             <h1>Home Page</h1>
             <div>Test val: {test ? <ChildPage1 /> : null}</div>
             <button onClick={clickHandler}>Change test</button>
             <AsyncComponent />
-        </div>
+        </main>
     );
 };
 
