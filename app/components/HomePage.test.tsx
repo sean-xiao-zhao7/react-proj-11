@@ -7,7 +7,7 @@ import HomePage from "./HomePage";
 describe("Home Page", () => {
     beforeEach(() => {
         window.fetch = jest.fn();
-        window.fetch.mockResolvedValue({
+        (window.fetch as jest.Mock).mockResolvedValue({
             json: async () => [1, 2, 3],
         });
     });
