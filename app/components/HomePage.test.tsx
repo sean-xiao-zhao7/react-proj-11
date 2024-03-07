@@ -5,6 +5,13 @@ import userEvent from "@testing-library/user-event";
 import HomePage from "./HomePage";
 
 describe("Home Page", () => {
+    beforeEach(() => {
+        window.fetch = jest.fn();
+        window.fetch.mockResolvedValue({
+            json: async () => [1, 2, 3],
+        });
+    });
+
     it("renders a heading", () => {
         render(<HomePage />);
 
